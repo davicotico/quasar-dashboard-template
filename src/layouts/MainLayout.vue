@@ -2,14 +2,7 @@
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
-        />
+        <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
         <q-toolbar-title> Quasar App </q-toolbar-title>
         <div>
           <q-separator dark vertical />
@@ -28,14 +21,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import UserToolbar from "src/shared/components/UserToolbar.vue";
-import SidebarMenu from "src/shared/components/sidebar/SidebarMenu.vue";
-import SidebarBottom from "src/shared/components/sidebar/SidebarBottom.vue";
+import { onMounted, ref } from 'vue';
+import UserToolbar from 'src/shared/components/UserToolbar.vue';
+import SidebarMenu from 'src/shared/components/sidebar/SidebarMenu.vue';
+import SidebarBottom from 'src/shared/components/sidebar/SidebarBottom.vue';
 
 const leftDrawerOpen = ref(false);
 
 function toggleLeftDrawer() {
   leftDrawerOpen.value = !leftDrawerOpen.value;
 }
+onMounted(() => {
+  console.log('Desde MainLayout.vue');
+});
 </script>
