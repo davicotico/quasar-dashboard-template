@@ -19,6 +19,7 @@ async function logout() {
           <!--  <q-toggle v-model="mobileData" label="Use Mobile Data" />
                   <q-toggle v-model="bluetooth" label="Bluetooth" /> -->
         </div>
+
         <q-separator vertical inset class="q-mx-lg" />
         <div class="column items-center">
           <q-avatar size="72px">
