@@ -8,10 +8,9 @@ const loading = ref(false);
 const user = ref('');
 const pass = ref('');
 
-function enter() {
-  router.push({ name: 'home' });
+async function enter() {
+  await router.push({ name: 'home' });
 }
-
 onMounted(() => {});
 </script>
 <template>
