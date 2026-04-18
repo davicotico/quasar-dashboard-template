@@ -4,12 +4,7 @@
       <q-toolbar>
         <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
         <q-toolbar-title> Quasar App </q-toolbar-title>
-        <q-btn
-          flat
-          round
-          @click="$q.dark.toggle()"
-          :icon="$q.dark.isActive ? 'dark_mode' : 'light_mode'"
-        />
+        <q-btn flat round @click="toggle()" :icon="isDark ? 'dark_mode' : 'light_mode'" />
         <div>
           <q-separator dark vertical />
           <user-toolbar></user-toolbar>
@@ -31,6 +26,9 @@ import { onMounted, ref } from 'vue';
 import UserToolbar from 'src/shared/components/UserToolbar.vue';
 import SidebarMenu from 'src/shared/components/sidebar/SidebarMenu.vue';
 import SidebarBottom from 'src/shared/components/sidebar/SidebarBottom.vue';
+import { useDarkMode } from 'src/shared/composables/useDarkMode';
+
+const { isDark, toggle } = useDarkMode();
 
 const leftDrawerOpen = ref(false);
 
