@@ -12,9 +12,9 @@ const routes: RouteRecordRaw[] = [
         component: () => import('pages/IndexPage.vue'),
       },
       {
-        path: '/qe-date',
-        name: 'qe-date',
-        component: () => import('pages/IndexPage.vue'),
+        path: '/open-layers',
+        name: 'open-layers',
+        component: () => import('pages/OpenLayersPage.vue'),
       },
     ],
   },

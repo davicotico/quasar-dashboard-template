@@ -1,3 +1,21 @@
+<script setup lang="ts">
+import { onMounted, ref } from 'vue';
+import UserToolbar from 'src/shared/components/UserToolbar.vue';
+import SidebarMenu from 'src/shared/components/sidebar/SidebarMenu.vue';
+import SidebarBottom from 'src/shared/components/sidebar/SidebarBottom.vue';
+import { useDarkMode } from 'src/shared/composables/useDarkMode';
+
+const { isDark, toggle } = useDarkMode();
+
+const leftDrawerOpen = ref(false);
+
+function toggleLeftDrawer() {
+  leftDrawerOpen.value = !leftDrawerOpen.value;
+}
+onMounted(() => {
+  console.log('Desde MainLayout.vue');
+});
+</script>
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
@@ -20,22 +38,3 @@
     </q-page-container>
   </q-layout>
 </template>
-
-<script setup lang="ts">
-import { onMounted, ref } from 'vue';
-import UserToolbar from 'src/shared/components/UserToolbar.vue';
-import SidebarMenu from 'src/shared/components/sidebar/SidebarMenu.vue';
-import SidebarBottom from 'src/shared/components/sidebar/SidebarBottom.vue';
-import { useDarkMode } from 'src/shared/composables/useDarkMode';
-
-const { isDark, toggle } = useDarkMode();
-
-const leftDrawerOpen = ref(false);
-
-function toggleLeftDrawer() {
-  leftDrawerOpen.value = !leftDrawerOpen.value;
-}
-onMounted(() => {
-  console.log('Desde MainLayout.vue');
-});
-</script>

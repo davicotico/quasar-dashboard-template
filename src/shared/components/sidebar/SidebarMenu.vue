@@ -16,10 +16,10 @@ const simpleMenu: EssentialLinkProps[] = [
     link: '/login',
   },
   {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: '/login',
+    title: 'OpenStreetMap',
+    caption: 'Maps with Open Layers',
+    icon: 'map',
+    link: '/open-layers',
   },
 ];
 console.log(simpleMenu);
