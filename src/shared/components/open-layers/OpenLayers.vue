@@ -15,26 +15,33 @@ import VectorSource from 'ol/source/Vector';
 import VectorLayer from 'ol/layer/Vector';
 
 type OLAttributes = {
-  height: string;
-  coordinates: string;
+  height?: string;
+  coordinate: {
+    lon: number;
+    lat: number;
+  };
 };
-//const props =
-defineProps<OLAttributes>();
+const props = withDefaults(defineProps<OLAttributes>(), {
+  height: '400px',
+  coordinate: () => ({ lon: 0, lat: 0 }),
+});
 onMounted(() => {
-  const coords = fromLonLat([-68.13446, -16.497192]);
+  const coords = fromLonLat([props.coordinate.lon, props.coordinate.lat]);
   const marker = new Feature({
     geometry: new Point(coords),
   });
   marker.setStyle(
     new Style({
       image: new Icon({
-        src: '/icons/favicon-16x16.png',
-        scale: 0.1,
-      }) /*new CircleStyle({
+        src: '/icons/favicon-32x32.png',
+        //scale: 0.1,
+      }),
+      /*new Style({
+      image: new CircleStyle({
         radius: 8,
         fill: new Fill({ color: 'red' }),
         stroke: new Stroke({ color: 'white', width: 2 }),
-      }),*/,
+      }),*/
     }),
   );
   const vectorSource = new VectorSource({
@@ -61,5 +68,5 @@ onMounted(() => {
 });
 </script>
 <template>
-  <div id="map" style="height: 400px" class="full-width"></div>
+  <div id="map" :style="`height: ${props.height}`" class="full-width"></div>
 </template>

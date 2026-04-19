@@ -1,60 +1,17 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import './style.css';
-import Map from 'ol/Map.js';
-import OSM from 'ol/source/OSM.js';
-import TileLayer from 'ol/layer/Tile.js';
-import View from 'ol/View.js';
-import { fromLonLat } from 'ol/proj';
-import { Feature } from 'ol';
-import Point from 'ol/geom/Point';
-import { Style, /*Circle as CircleStyle,*/ Icon } from 'ol/style.js';
-//import Fill from 'ol/style/Fill';
-//import Stroke from 'ol/style/Stroke';
-import VectorSource from 'ol/source/Vector';
-import VectorLayer from 'ol/layer/Vector';
+import OpenLayers from 'src/shared/components/open-layers/OpenLayers.vue';
 
-onMounted(() => {
-  const coords = fromLonLat([-68.13446, -16.497192]);
-  const marker = new Feature({
-    geometry: new Point(coords),
-  });
-  marker.setStyle(
-    new Style({
-      image: new Icon({
-        src: '/icons/favicon-32x32.png',
-        //scale: 0.1,
-      }),
-      /*new Style({
-      image: new CircleStyle({
-        radius: 8,
-        fill: new Fill({ color: 'red' }),
-        stroke: new Stroke({ color: 'white', width: 2 }),
-      }),*/
-    }),
-  );
-  const vectorSource = new VectorSource({
-    features: [marker],
-  });
-  const vectorLayer = new VectorLayer({
-    source: vectorSource,
-  });
-
-  const map = new Map({
-    target: 'map',
-    layers: [
-      new TileLayer({
-        source: new OSM(),
-      }),
-      vectorLayer,
-    ],
-    view: new View({
-      center: coords,
-      zoom: 12,
-    }),
-  });
-  console.log(map);
-});
+const lon: number = -68.13446;
+const lat: number = -16.497192;
+const code = `
+// script setup
+const lon: number = -68.13446;
+const lat: number = -16.497192;
+// template
+<open-layers height="400px" :coordinate="{ lon, lat }" />
+`;
+onMounted(() => {});
 </script>
 <template>
   <q-layout>
@@ -62,13 +19,17 @@ onMounted(() => {
       <q-page class="q-pa-md">
         <div class="row q-gutter-md">
           <div class="col-5 bg-green-2">
-            <div id="map" style="height: 400px" class="full-width"></div>
+            <open-layers :coordinate="{ lon, lat }" />
           </div>
           <div class="col-5">
             <h5 class="q-my-sm">Instalar OpenLayers</h5>
-            <pre><code>npm install ol
-                </code>
+            <code>npm install ol</code>
+            <h5 class="q-my-md">How to use</h5>
+            <code>
+              <pre>
+                {{ code }}
               </pre>
+            </code>
           </div>
         </div>
       </q-page>
