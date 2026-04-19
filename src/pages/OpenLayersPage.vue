@@ -9,7 +9,7 @@ const code = `
 const lon: number = -68.13446;
 const lat: number = -16.497192;
 // template
-<open-layers height="400px" :coordinate="{ lon, lat }" />
+<open-layers id="myMap" height="400px" :coordinate="{ lon, lat }" :zoom="18" />
 `;
 onMounted(() => {});
 </script>
@@ -17,11 +17,11 @@ onMounted(() => {});
   <q-layout>
     <q-page-container>
       <q-page class="q-pa-md">
-        <div class="row q-gutter-md">
-          <div class="col-5 bg-green-2">
-            <open-layers :coordinate="{ lon, lat }" />
+        <div class="row q-col-gutter-md">
+          <div class="col-12 col-md-6">
+            <open-layers id="map" :coordinate="{ lon, lat }" :zoom="18" />
           </div>
-          <div class="col-5">
+          <div class="col-12 col-md-6">
             <h5 class="q-my-sm">Instalar OpenLayers</h5>
             <code>npm install ol</code>
             <h5 class="q-my-md">How to use</h5>

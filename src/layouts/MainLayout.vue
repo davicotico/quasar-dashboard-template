@@ -8,7 +8,6 @@ import { useDarkMode } from 'src/shared/composables/useDarkMode';
 const { isDark, toggle } = useDarkMode();
 
 const leftDrawerOpen = ref(false);
-
 function toggleLeftDrawer() {
   leftDrawerOpen.value = !leftDrawerOpen.value;
 }

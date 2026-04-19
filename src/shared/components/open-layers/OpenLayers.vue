@@ -15,7 +15,9 @@ import VectorSource from 'ol/source/Vector';
 import VectorLayer from 'ol/layer/Vector';
 
 type OLAttributes = {
+  id: string;
   height?: string;
+  zoom?: number;
   coordinate: {
     lon: number;
     lat: number;
@@ -23,6 +25,7 @@ type OLAttributes = {
 };
 const props = withDefaults(defineProps<OLAttributes>(), {
   height: '400px',
+  zoom: 15,
   coordinate: () => ({ lon: 0, lat: 0 }),
 });
 onMounted(() => {
@@ -52,7 +55,7 @@ onMounted(() => {
   });
 
   const map = new Map({
-    target: 'map',
+    target: props.id,
     layers: [
       new TileLayer({
         source: new OSM(),
@@ -61,12 +64,12 @@ onMounted(() => {
     ],
     view: new View({
       center: coords,
-      zoom: 12,
+      zoom: props.zoom,
     }),
   });
   console.log(map);
 });
 </script>
 <template>
-  <div id="map" :style="`height: ${props.height}`" class="full-width"></div>
+  <div :id="props.id" :style="`height: ${props.height}`" class="full-width"></div>
 </template>

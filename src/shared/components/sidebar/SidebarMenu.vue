@@ -1,37 +1,17 @@
 <script setup lang="ts">
-import { type EssentialLinkProps } from 'src/shared/types/sidebar.type';
 import SidebarMenuItem from './SidebarMenuItem.vue';
-
-const simpleMenu: EssentialLinkProps[] = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: '/login',
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: '/login',
-  },
-  {
-    title: 'OpenStreetMap',
-    caption: 'Maps with Open Layers',
-    icon: 'map',
-    link: '/open-layers',
-  },
-];
-console.log(simpleMenu);
 </script>
 <template>
   <q-list>
     <q-item-label header>Menu principal</q-item-label>
+    <sidebar-menu-item href="/" text="Home" icon="home"></sidebar-menu-item>
     <sidebar-menu-item
-      v-for="link in simpleMenu"
-      :key="link.title"
-      v-bind="link"
+      href="/open-layers"
+      text="Open Layers"
+      tooltip="Maps with Open layers"
+      icon="map"
     ></sidebar-menu-item>
+    <sidebar-menu-item href="/login" text="Login" icon="lock"></sidebar-menu-item>
     <q-expansion-item
       expand-separator
       icon="settings"

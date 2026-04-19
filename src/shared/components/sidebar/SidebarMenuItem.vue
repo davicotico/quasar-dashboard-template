@@ -1,21 +1,21 @@
 <template>
-  <q-item clickable :to="link">
+  <q-item clickable :to="href">
     <q-item-section v-if="icon" avatar>
       <q-icon :name="icon" />
     </q-item-section>
     <q-item-section>
-      <q-item-label>{{ title }}</q-item-label>
-      <q-item-label caption>{{ caption }}</q-item-label>
+      <q-item-label>{{ text }}</q-item-label>
+      <q-item-label caption>{{ tooltip }}</q-item-label>
     </q-item-section>
   </q-item>
 </template>
 
 <script setup lang="ts">
-import { type EssentialLinkProps } from 'src/shared/types/sidebar.type';
+import { type MenuItem } from './sidebar.type';
 
-withDefaults(defineProps<EssentialLinkProps>(), {
-  caption: '',
-  link: '/',
+withDefaults(defineProps<MenuItem>(), {
+  tooltip: '',
+  href: '/',
   icon: '',
 });
 </script>
