@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
+import type { MenuItem } from 'src/shared/components/sidebar/sidebar.type';
 import UserToolbar from 'src/shared/components/UserToolbar.vue';
 import SidebarMenu from 'src/shared/components/sidebar/SidebarMenu.vue';
 import SidebarBottom from 'src/shared/components/sidebar/SidebarBottom.vue';
@@ -11,9 +12,91 @@ const leftDrawerOpen = ref(false);
 function toggleLeftDrawer() {
   leftDrawerOpen.value = !leftDrawerOpen.value;
 }
-onMounted(() => {
-  console.log('Desde MainLayout.vue');
-});
+
+const menuItems = ref<MenuItem[]>([
+  {
+    text: 'Home',
+    href: '/',
+    icon: 'home',
+    tooltip: 'Go to home page',
+    children: [],
+  },
+  {
+    text: 'OpenStreetMap',
+    href: '/open-layers',
+    icon: 'map',
+    tooltip: 'Maps with Open Layers',
+    children: [],
+  },
+  {
+    text: 'Documents',
+    href: '/documents',
+    icon: 'folder',
+    tooltip: 'Browse your documents',
+    children: [
+      {
+        text: 'Reports',
+        href: '/documents/reports',
+        icon: 'description',
+        tooltip: 'View all reports',
+        children: [
+          {
+            text: 'Sales 2026',
+            href: '/reports/sales',
+            icon: 'bar_chart',
+            tooltip: 'Sales reports for 2025',
+            children: [],
+          },
+          {
+            text: 'Monthly Expenses',
+            href: '/reports/expenses',
+            icon: 'pie_chart',
+            tooltip: 'Monthly expense reports',
+            children: [],
+          },
+        ],
+      },
+      {
+        text: 'Receipts',
+        href: '/documents/receipts',
+        icon: 'receipt',
+        tooltip: 'View all receipts',
+        children: [],
+      },
+    ],
+  },
+  {
+    text: 'Configuration',
+    href: '/config',
+    icon: 'settings',
+    tooltip: 'Preferences and settings',
+    children: [
+      {
+        text: 'Profile',
+        href: '/config/profile',
+        icon: 'person',
+        tooltip: 'Manage your profile',
+        children: [],
+      },
+      {
+        text: 'Security',
+        href: '/config/security',
+        icon: 'lock',
+        tooltip: 'Security settings',
+        children: [],
+      },
+    ],
+  },
+  {
+    text: 'Login',
+    href: '/login',
+    icon: 'lock',
+    tooltip: 'Go to login page',
+    children: [],
+  },
+]);
+
+onMounted(() => {});
 </script>
 <template>
   <q-layout view="lHh Lpr lFf">
@@ -29,7 +112,7 @@ onMounted(() => {
       </q-toolbar>
     </q-header>
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
-      <sidebar-menu />
+      <sidebar-menu :menu-items="menuItems" />
       <sidebar-bottom></sidebar-bottom>
     </q-drawer>
     <q-page-container>

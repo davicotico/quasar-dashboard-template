@@ -3,6 +3,7 @@ type MenuItem = {
   tooltip?: string;
   href?: string;
   icon?: string;
+  children?: MenuItem[];
 };
 
 export type { MenuItem };
