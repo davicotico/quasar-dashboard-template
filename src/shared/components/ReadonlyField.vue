@@ -1,8 +1,9 @@
-<script setup>
-defineProps({
-  label: String,
-  value: String,
-});
+<script setup lang="ts">
+type Props = {
+  label: string;
+  value: string;
+};
+defineProps<Props>();
 </script>
 <template>
   <q-field borderless :label="label" stack-label>
