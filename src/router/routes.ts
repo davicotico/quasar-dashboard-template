@@ -16,6 +16,11 @@ const routes: RouteRecordRaw[] = [
         name: 'open-layers',
         component: () => import('pages/OpenLayersPage.vue'),
       },
+      {
+        path: '/forms',
+        name: 'forms',
+        component: () => import('pages/FormPage.vue'),
+      },
     ],
   },
   {

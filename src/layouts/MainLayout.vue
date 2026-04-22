@@ -15,10 +15,10 @@ function toggleLeftDrawer() {
 
 const menuItems = ref<MenuItem[]>([
   {
-    text: 'Home',
-    href: '/',
-    icon: 'home',
-    tooltip: 'Go to home page',
+    text: 'Forms',
+    href: '/forms',
+    icon: 'input',
+    tooltip: 'Form components',
     children: [],
   },
   {
