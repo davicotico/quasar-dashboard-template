@@ -17,7 +17,7 @@ const menuItems = ref<MenuItem[]>([
   {
     text: 'Forms',
     href: '/forms',
-    icon: 'input',
+    icon: 'edit',
     tooltip: 'Form components',
     children: [],
   },

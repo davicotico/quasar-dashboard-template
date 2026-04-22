@@ -4,6 +4,17 @@ import DatePickerInput from 'src/shared/components/DatePickerInput.vue';
 import { ref } from 'vue';
 
 const today = ref('21/04//2026');
+
+const CODE = `
+//script
+
+const today = ref('21/04//2026');
+
+// template
+<date-picker-input v-model="today" label="Date example" />
+
+<readonly-field label="Serie" value="5/2026"></readonly-field>
+`;
 </script>
 <template>
   <div class="q-pa-md">
@@ -24,6 +35,17 @@ const today = ref('21/04//2026');
             </div>
           </q-card-section>
         </q-card>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h3>How to use</h3>
+        <code>
+          <pre
+            >{{ CODE }}
+        </pre
+          >
+        </code>
       </div>
     </div>
   </div>
