@@ -1,14 +1,30 @@
 <script setup lang="ts">
+import { useRegle } from '@regle/core';
+import { minLength, required } from '@regle/rules';
 import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
 
 const loading = ref(false);
-const user = ref('');
-const pass = ref('');
+const formData = ref<{
+  user: string;
+  pass: string;
+}>({
+  user: '',
+  pass: '',
+});
+const { r$ } = useRegle(formData, {
+  user: { required, minLength: minLength(2) },
+  pass: { required, minLength: minLength(2) },
+});
 
 async function enter() {
+  const v = await r$.$validate();
+  if (!v.valid) {
+    console.log(v.errors);
+    return;
+  }
   await router.push({ name: 'home' });
 }
 onMounted(() => {});
@@ -30,24 +46,26 @@ onMounted(() => {});
             <q-card-section>
               <q-form @submit.prevent="enter()" ref="formRef">
                 <q-input
-                  v-model="user"
+                  v-model="formData.user"
                   label="Username"
                   outlined
                   class="q-mb-md"
                   maxlength="20"
                   autofocus
+                  :error="r$.user.$error"
                 >
                   <template v-slot:prepend>
                     <q-icon name="person" />
                   </template>
                 </q-input>
                 <q-input
-                  v-model="pass"
+                  v-model="formData.pass"
                   label="Password"
                   outlined
                   class="q-mb-md"
                   type="password"
                   maxlength="100"
+                  :error="r$.pass.$error"
                 >
                   <template v-slot:prepend>
                     <q-icon name="lock" />
@@ -60,6 +78,7 @@ onMounted(() => {});
                     class="full-width col-3 q-mb-md"
                     color="primary"
                     type="submit"
+                    :disable="r$.$error"
                   />
                 </div>
               </q-form>
