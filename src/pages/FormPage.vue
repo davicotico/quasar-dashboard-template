@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import ReadonlyField from 'src/shared/components/ReadonlyField.vue';
 import DatePickerInput from 'src/shared/components/DatePickerInput.vue';
+import AlertMessage from 'src/shared/components/AlertMessage.vue';
 import { ref } from 'vue';
 
 const today = ref('21/04//2026');
@@ -35,6 +36,15 @@ const today = ref('21/04//2026');
             </div>
           </q-card-section>
         </q-card>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <alert-message
+          message="El mensaje de alerta va a usar isDark"
+          type="success"
+          title="Correcto"
+        ></alert-message>
       </div>
     </div>
     <div class="row">
