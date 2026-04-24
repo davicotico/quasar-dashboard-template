@@ -22,6 +22,13 @@ const menuItems = ref<MenuItem[]>([
     children: [],
   },
   {
+    text: 'Sidebar Menu',
+    href: '/sidebar',
+    icon: 'menu',
+    tooltip: 'Sidebar menu elements',
+    children: [],
+  },
+  {
     text: 'OpenStreetMap',
     href: '/open-layers',
     icon: 'map',

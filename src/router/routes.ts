@@ -17,6 +17,11 @@ const routes: RouteRecordRaw[] = [
         component: () => import('pages/OpenLayersPage.vue'),
       },
       {
+        path: '/sidebar',
+        name: 'sidebar',
+        component: () => import('pages/SidebarPage.vue'),
+      },
+      {
         path: '/forms',
         name: 'forms',
         component: () => import('pages/FormPage.vue'),
