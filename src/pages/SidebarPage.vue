@@ -9,7 +9,7 @@ type MenuItem = {
   children?: MenuItem[];
 };
 // script
-const menuItems: MenuType[] = [];
+const menuItems: MenuItem[] = [];
 // template
 <sidebar-menu :menu-items="menuItems" />
 `;

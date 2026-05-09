@@ -8,7 +8,7 @@
       This project is in DEV mode.
       <div>Quasar v{{ $q.version }}</div>
       <template v-slot:action>
-        <q-btn flat color="primary" label="Ok" />
+        <q-btn flat color="primary" label="View on Github" />
       </template>
     </q-banner>
   </div>

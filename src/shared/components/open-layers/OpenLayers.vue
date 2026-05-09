@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
-import './style.css';
+import { onMounted, ref } from 'vue';
 import Map from 'ol/Map.js';
+import './style.css';
 import OSM from 'ol/source/OSM.js';
 import TileLayer from 'ol/layer/Tile.js';
 import View from 'ol/View.js';
@@ -28,6 +28,9 @@ const props = withDefaults(defineProps<OLAttributes>(), {
   zoom: 15,
   coordinate: () => ({ lon: 0, lat: 0 }),
 });
+
+const url = ref('');
+
 onMounted(() => {
   const coords = fromLonLat([props.coordinate.lon, props.coordinate.lat]);
   const marker = new Feature({
@@ -68,8 +71,30 @@ onMounted(() => {
     }),
   });
   console.log(map);
+  url.value = generateMapUrl();
 });
+
+function generateMapUrl() {
+  const lon = props.coordinate.lon;
+  const lat = props.coordinate.lat;
+  const zoom = props.zoom;
+  return `https://www.openstreetmap.org/#map=${zoom}/${lat}/${lon}`;
+}
 </script>
 <template>
-  <div :id="props.id" :style="`height: ${props.height}`" class="full-width"></div>
+  <q-card>
+    <q-card-section class="q-pa-none">
+      <div :id="props.id" :style="`height: ${props.height}`" class="full-width"></div>
+    </q-card-section>
+    <q-card-section class="q-pa-none">
+      <q-btn
+        :href="url"
+        target="_blank"
+        label="Open"
+        class="full-width"
+        icon="open_in_new"
+        flat
+      ></q-btn>
+    </q-card-section>
+  </q-card>
 </template>
