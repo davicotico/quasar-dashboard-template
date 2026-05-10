@@ -1,9 +1,6 @@
-<script setup lang="ts">
-import { type Contact } from 'src/components/models';
-import ContactCard from 'src/components/ContactCard.vue';
-import { ref } from 'vue';
+import { type Contact } from '../models';
 
-const lista: Contact[] = [
+export const LISTA_CONTACTOS: Contact[] = [
   {
     id: '123456',
     displayName: 'David Tomas Ticona Saravia',
@@ -239,24 +236,3 @@ const lista: Contact[] = [
     office: 'Laboratorio de Innovación y Tecnologías Emergentes',
   },
 ];
-
-const contactos = ref<Contact[]>(lista);
-</script>
-<template>
-  <div class="q-pa-md">
-    <div class="row">
-      <div class="col">
-        <h3>Contact List</h3>
-      </div>
-    </div>
-    <div class="row q-col-gutter-md">
-      <div
-        v-for="contacto in contactos"
-        :key="contacto.id"
-        class="col-xs-12 col-sm-6 col-md-4 col-lg-3"
-      >
-        <contact-card v-bind="contacto"> </contact-card>
-      </div>
-    </div>
-  </div>
-</template>

@@ -29,7 +29,7 @@ const routes: RouteRecordRaw[] = [
       {
         path: '/contact-list',
         name: 'ContactList',
-        component: () => import('pages/ContactList.vue'),
+        component: () => import('pages/ContactListPage.vue'),
       },
     ],
   },
