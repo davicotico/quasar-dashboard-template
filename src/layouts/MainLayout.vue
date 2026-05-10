@@ -29,6 +29,13 @@ const menuItems = ref<MenuItem[]>([
     children: [],
   },
   {
+    text: 'Contact List',
+    href: '/contact-list',
+    icon: 'person',
+    tooltip: 'Active Directory',
+    children: [],
+  },
+  {
     text: 'OpenStreetMap',
     href: '/open-layers',
     icon: 'map',

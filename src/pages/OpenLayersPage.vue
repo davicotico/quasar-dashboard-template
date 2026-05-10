@@ -22,7 +22,7 @@ onMounted(() => {});
             <open-layers id="map" :coordinate="{ lon, lat }" :zoom="18" />
           </div>
           <div class="col-12 col-md-6">
-            <h5 class="q-my-sm">Instalar OpenLayers</h5>
+            <h5 class="q-my-sm">Install OpenLayers</h5>
             <code>npm install ol</code>
             <h5 class="q-my-md">How to use</h5>
             <code>
