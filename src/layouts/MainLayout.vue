@@ -36,6 +36,13 @@ const menuItems = ref<MenuItem[]>([
     children: [],
   },
   {
+    text: 'Dialogs',
+    href: '/dialogs-notifications',
+    icon: 'chat',
+    tooltip: 'How to use',
+    children: [],
+  },
+  {
     text: 'OpenStreetMap',
     href: '/open-layers',
     icon: 'map',

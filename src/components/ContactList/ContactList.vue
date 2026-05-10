@@ -29,38 +29,36 @@ function searchContacts(rows: readonly Contact[], terms: string): readonly Conta
 }
 </script>
 <template>
-  <div class="q-pa-md">
-    <q-table
-      :rows="LISTA_CONTACTOS"
-      :columns="columns"
-      row-key="id"
-      :filter="filter"
-      :filter-method="searchContacts"
-      grid
-      rows-per-page-label="Filas visibles"
-      :pagination-label="(start, end, total) => `${start}-${end} de ${total}`"
-      :rows-per-page-options="[12, 24, 36]"
-      hide-header
-    >
-      <template v-slot:top>
-        <q-input
-          dense
-          debounce="300"
-          v-model="filter"
-          placeholder="Buscar por nombres, apellidos o email"
-          outlined
-          class="full-width"
-        >
-          <template v-slot:append>
-            <q-icon name="search" />
-          </template>
-        </q-input>
-      </template>
-      <template v-slot:item="props">
-        <div class="q-pa-xs col-xs-12 col-sm-6 col-md-4 col-lg-3 grid-style-transition">
-          <contact-card v-bind="props.row"></contact-card>
-        </div>
-      </template>
-    </q-table>
-  </div>
+  <q-table
+    :rows="LISTA_CONTACTOS"
+    :columns="columns"
+    row-key="id"
+    :filter="filter"
+    :filter-method="searchContacts"
+    grid
+    rows-per-page-label="Filas visibles"
+    :pagination-label="(start, end, total) => `${start}-${end} de ${total}`"
+    :rows-per-page-options="[12, 24, 36]"
+    hide-header
+  >
+    <template v-slot:top>
+      <q-input
+        dense
+        debounce="300"
+        v-model="filter"
+        placeholder="Buscar por nombres, apellidos o email"
+        outlined
+        class="full-width"
+      >
+        <template v-slot:append>
+          <q-icon name="search" />
+        </template>
+      </q-input>
+    </template>
+    <template v-slot:item="props">
+      <div class="q-pa-xs col-xs-12 col-sm-6 col-md-4 col-lg-3 grid-style-transition">
+        <contact-card v-bind="props.row"></contact-card>
+      </div>
+    </template>
+  </q-table>
 </template>

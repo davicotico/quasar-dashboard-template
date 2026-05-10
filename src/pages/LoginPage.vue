@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useRegle } from '@regle/core';
 import { minLength, required } from '@regle/rules';
+import { showWarningNotification } from 'src/shared/utils/dialogs';
 import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
@@ -23,6 +24,7 @@ async function enter() {
   const v = await r$.$validate();
   if (!v.valid) {
     console.log(v.errors);
+    showWarningNotification('Debe ingresar sus credenciales');
     return;
   }
   await router.push({ name: 'home' });

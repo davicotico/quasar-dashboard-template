@@ -28,8 +28,13 @@ const routes: RouteRecordRaw[] = [
       },
       {
         path: '/contact-list',
-        name: 'ContactList',
+        name: 'contact.list',
         component: () => import('pages/ContactListPage.vue'),
+      },
+      {
+        path: '/dialogs-notifications',
+        name: 'dialogs.notification',
+        component: () => import('pages/DialogsPage.vue'),
       },
     ],
   },
