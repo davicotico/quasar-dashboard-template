@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { MenuEditor } from '@davicotico/menu-editor';
 import '@davicotico/menu-editor/lib/css/styles.css';
+import { MENU_ITEMS } from 'src/data/menu-items';
 import { type MenuItem } from 'src/shared/components/sidebar/sidebar.type';
 import { showConfirmDialog } from 'src/shared/utils/dialogs';
 import { onMounted, ref } from 'vue';
-const data = [
+/*const data = [
   {
     text: 'Home',
     href: '/home',
@@ -19,7 +20,7 @@ const data = [
     icon: 'fa-solid fa-address-card',
     children: [],
   },
-];
+];*/
 let menuEditor: MenuEditor | null = null;
 const isEditing = ref(false);
 const form = ref<MenuItem>({ text: '', children: [], href: '', icon: '', tooltip: '' });
@@ -41,7 +42,7 @@ onMounted(() => {
       e.item.remove();
     });
   });
-  menuEditor.setArray(data);
+  menuEditor.setArray(MENU_ITEMS);
   menuEditor.mount();
 });
 
