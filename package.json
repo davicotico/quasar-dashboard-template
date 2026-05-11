@@ -15,6 +15,7 @@
     "postinstall": "quasar prepare"
   },
   "dependencies": {
+    "@davicotico/menu-editor": "^1.2.0",
     "@quasar/extras": "^1.16.4",
     "@regle/core": "^1.23.1",
     "@regle/rules": "^1.23.1",

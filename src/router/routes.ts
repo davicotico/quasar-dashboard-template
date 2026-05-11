@@ -36,6 +36,11 @@ const routes: RouteRecordRaw[] = [
         name: 'dialogs.notification',
         component: () => import('pages/DialogsPage.vue'),
       },
+      {
+        path: '/menu-editor',
+        name: 'menueditor',
+        component: () => import('pages/MenuEditorPage.vue'),
+      },
     ],
   },
   {

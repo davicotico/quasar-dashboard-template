@@ -43,6 +43,13 @@ const menuItems = ref<MenuItem[]>([
     children: [],
   },
   {
+    text: 'Menu Editor',
+    href: '/menu-editor',
+    icon: 'menu',
+    tooltip: 'How to use',
+    children: [],
+  },
+  {
     text: 'OpenStreetMap',
     href: '/open-layers',
     icon: 'map',
