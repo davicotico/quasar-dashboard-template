@@ -5,22 +5,7 @@ import { MENU_ITEMS } from 'src/data/menu-items';
 import { type MenuItem } from 'src/shared/components/sidebar/sidebar.type';
 import { showConfirmDialog } from 'src/shared/utils/dialogs';
 import { onMounted, ref } from 'vue';
-/*const data = [
-  {
-    text: 'Home',
-    href: '/home',
-    tooltip: 'Go to home page',
-    icon: 'fa-solid fa-house',
-    children: [],
-  },
-  {
-    text: 'About Us',
-    href: '/about',
-    tooltip: 'Learn more about our company',
-    icon: 'fa-solid fa-address-card',
-    children: [],
-  },
-];*/
+
 let menuEditor: MenuEditor | null = null;
 const isEditing = ref(false);
 const form = ref<MenuItem>({ text: '', children: [], href: '', icon: '', tooltip: '' });
@@ -96,7 +81,11 @@ function clearForm() {
               <q-input v-model="form.href" label="To (route)" outlined></q-input>
             </div>
             <div class="col">
-              <q-input v-model="form.icon" label="Icon" outlined></q-input>
+              <q-input v-model="form.icon" label="Icon" outlined>
+                <template v-slot:append>
+                  <q-btn round dense flat :icon="form.icon" />
+                </template>
+              </q-input>
             </div>
             <div class="col">
               <q-input v-model="form.tooltip" label="Tooltip/Caption" outlined></q-input>

@@ -1,5 +1,3 @@
-//import { type MenuItem } from 'src/shared/components/sidebar/sidebar.type';
-
 export const MENU_ITEMS = [
   {
     text: 'Forms',
